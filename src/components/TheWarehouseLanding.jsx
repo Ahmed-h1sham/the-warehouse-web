@@ -116,8 +116,9 @@ const navigate = useNavigate();
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <img src="/images/wh-logo-primary.jpg" alt="The Warehouse Logo" className="h-12 w-12 mr-3" />
-            <div className="text-2xl font-bold text-white">
-              The <span className="text-yellow-400">Warehouse</span>
+            <div className="text-3xl font-bold text-white">
+            <span className="text-yellow-400">The Warehouse</span>
+            <span className="flex items-left px-1 text-xs text-grey">The Engine Behind Your Business</span>
             </div>
           </div>
           <nav className="hidden md:flex space-x-8">
@@ -151,7 +152,7 @@ const navigate = useNavigate();
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-black">
+      <section className="py-20 bg-gradient-to-br from-black-700 to-black">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
             From Stock to Ship,
@@ -175,19 +176,20 @@ const navigate = useNavigate();
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("services")}
-              className="border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white text-lg px-8 py-3 bg-transparent cursor-pointer"
+              className="border-yellow-600 text-yellow-600 hover:bg-yellow-400 hover:text-white text-lg px-8 py-3 bg-transparent cursor-pointer"
             >
               Learn More
             </Button>
           </div>
         </div>
       </section>
-
+      <br>
+      </br>
       {/* Services Section */}
       <section id="services" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Our Services</h2>
+            <h2 className="text-4xl font-bold text-yellow-400 mb-4">Our Services</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               At The Warehouse, we streamline inventory management, warehousing, and order fulfillment, allowing
               business owners to focus on growth while we handle their logistics & operations.
@@ -198,13 +200,13 @@ const navigate = useNavigate();
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="bg-gray-900 border-gray-800 hover:border-yellow-400 transition-colors duration-300 hover:shadow-lg hover:shadow-yellow-400/20"
+                className="bg-black-900 border-yellow-800 hover:border-yellow-400 transition-colors duration-300 hover:shadow-lg hover:shadow-yellow-400/20"
               >
                 <CardHeader>
                   <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mb-4">
                     <service.icon className="h-6 w-6 text-black" />
                   </div>
-                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-yellow-400">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-gray-300 leading-relaxed">{service.description}</CardDescription>
@@ -216,11 +218,11 @@ const navigate = useNavigate();
       </section>
 
       {/* Why Choose The Warehouse */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-black-900">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-6">Why Choose The Warehouse?</h2>
+              <h2 className="text-4xl font-bold text-yellow-400 mb-6">Why Choose The Warehouse?</h2>
               <p className="text-lg text-gray-300 mb-8">
                 Let us handle the operations while you focus on building your business. Our end-to-end solutions ensure
                 efficiency, accuracy, and reliability.
@@ -234,12 +236,12 @@ const navigate = useNavigate();
                 ))}
               </div>
             </div>
-            <div className="bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700">
+            <div className="bg-gray-950 p-8 rounded-2xl shadow-lg border border-gray-700">
               <div className="text-center">
                 <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Package className="h-10 w-10 text-black" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
+                <h3 className="text-2xl font-bold text-yellow-400 mb-4">Ready to Get Started?</h3>
                 <p className="text-gray-300 mb-6">
                   Join businesses across Egypt who trust The Warehouse with their logistics operations.
                 </p>
@@ -253,10 +255,10 @@ const navigate = useNavigate();
       </section>
 <hr></hr>
       {/* Trusted By Section */}
-<section className="py-16 bg-gray-900">
+<section className="py-16 bg-black-900">
   <div className="container mx-auto px-4">
     <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-white mb-4">Trusted by Leading Brands</h2>
+      <h2 className="text-3xl font-bold text-yellow-400 mb-4">Trusted by Leading Brands</h2>
       <p className="text-gray-300 text-lg">
         Join the growing list of successful businesses that trust The Warehouse with their logistics operations
       </p>
@@ -288,15 +290,15 @@ const navigate = useNavigate();
       <section id="about" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-white mb-8">Who We Are</h2>
+            <h2 className="text-4xl font-bold text-yellow-400 mb-8">Who We Are</h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
               The Warehouse is a leading warehousing and fulfillment partner based in Egypt, dedicated to streamlining
               inventory management, distribution, and order fulfillment for all businesses. Built with a vision to
               optimize supply chain operations, we offer end-to-end logistics solutions.
             </p>
 
-            <div className="bg-yellow-600/20 rounded-2xl p-8 mb-8 border border-yellow-600/30">
-              <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+            <div className="bg-gray-600/20 rounded-2xl p-8 mb-8 border border-yellow-600/30">
+              <h3 className="text-2xl font-bold text-yellow-400 mb-4">Our Mission</h3>
               <p className="text-lg text-gray-200 leading-relaxed">
                 At The Warehouse, our mission is to redefine warehousing and fulfillment with a focus on efficiency,
                 accuracy, and seamless operations. We are committed to providing businesses with transparent, reliable,
@@ -308,9 +310,9 @@ const navigate = useNavigate();
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-black-900">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Logistics?</h2>
+          <h2 className="text-4xl font-bold text-yellow-400 mb-6">Ready to Transform Your Logistics?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Let The Warehouse handle your warehousing and fulfillment while you focus on growing your business.
           </p>
@@ -334,14 +336,14 @@ const navigate = useNavigate();
               <div className="flex items-center mb-4">
                 <img src="/images/wh-logo-primary.jpg" alt="The Warehouse Logo" className="h-8 w-8 mr-2" />
                 <div className="text-2xl font-bold">
-                  The <span className="text-yellow-400">Warehouse</span>
+                <span className="text-yellow-400">The Warehouse</span>
                 </div>
               </div>
               <p className="text-gray-400">Your trusted warehousing and fulfillment partner in Egypt.</p>
               <p className="text-gray-500 text-sm mt-2">Backend Operations</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-white">Services</h4>
+              <h4 className="font-semibold mb-4 text-yellow-400">Services</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>Stock Reception</li>
                 <li>Inventory Management</li>
@@ -350,7 +352,7 @@ const navigate = useNavigate();
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-white">Company</h4>
+              <h4 className="font-semibold mb-4 text-yellow-400">Company</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>About Us</li>
                 <li>Our Mission</li>
@@ -358,7 +360,7 @@ const navigate = useNavigate();
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-white">Contact</h4>
+              <h4 className="font-semibold mb-4 text-yellow-400">Contact</h4>
               <ul className="space-y-2 text-gray-400">
                 <a href="https://maps.app.goo.gl/3Nhc6VMTe4PqxM4i8?g_st=com.google.maps.preview.copy" target="_blank" className="hover:underline text-gray-400">First Settlement, 8th district</a>
                 <li>
@@ -371,11 +373,13 @@ const navigate = useNavigate();
                     +20 1008766506
                   </a>
                 </li>
-                              </ul>
+             </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 The Warehouse. All rights reserved.</p>
+            <p>&copy; 2025 The Warehouse. All rights reserved.</p>
+            <br></br>
+            <a href="mailto:ahmedhabdelfattah2@gmail.com" className="hover:underline text-gray-400">Contact Developer</a>
           </div>
         </div>
       </footer>

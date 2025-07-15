@@ -60,8 +60,9 @@ const GetStarted = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <img src="/images/wh-logo-primary.jpg" alt="The Warehouse Logo" className="h-12 w-12 mr-3" />
-            <div className="text-2xl font-bold text-white">
-              The <span className="text-yellow-400">Warehouse</span>
+            <div className="text-3xl font-bold text-white">
+            <span className="text-yellow-400">The Warehouse</span>
+            <span className="flex items-left px-1 text-xs text-grey">The Engine Behind Your Business</span>
             </div>
           </div>
           <nav className="hidden md:flex space-x-8">
@@ -108,8 +109,8 @@ const GetStarted = () => {
       </div>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-900 text-center">
-        <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Logistics?</h2>
+      <section className="py-20 bg-black-700 text-center">
+        <h2 className="text-4xl font-bold text-yellow-400 mb-6">Ready to Transform Your Logistics?</h2>
         <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
           Let The Warehouse handle your warehousing and fulfillment while you focus on growing your business.
         </p>
@@ -136,14 +137,14 @@ const GetStarted = () => {
               <div className="flex items-center mb-4">
                 <img src="/images/wh-logo-primary.jpg" alt="The Warehouse Logo" className="h-8 w-8 mr-2" />
                 <div className="text-2xl font-bold">
-                  The <span className="text-yellow-400">Warehouse</span>
+                <span className="text-yellow-400">The Warehouse</span>
                 </div>
               </div>
               <p className="text-gray-400">Your trusted warehousing and fulfillment partner in Egypt.</p>
               <p className="text-gray-500 text-sm mt-2">Backend Operations</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-white">Services</h4>
+              <h4 className="font-semibold mb-4 text-yellow-400">Services</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>Stock Reception</li>
                 <li>Inventory Management</li>
@@ -152,7 +153,7 @@ const GetStarted = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-white">Company</h4>
+              <h4 className="font-semibold mb-4 text-yellow-400">Company</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>About Us</li>
                 <li>Our Mission</li>
@@ -160,16 +161,26 @@ const GetStarted = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-white">Contact</h4>
+              <h4 className="font-semibold mb-4 text-yellow-400">Contact</h4>
               <ul className="space-y-2 text-gray-400">
                 <a href="https://maps.app.goo.gl/3Nhc6VMTe4PqxM4i8?g_st=com.google.maps.preview.copy" target="_blank" className="hover:underline text-gray-400">First Settlement, 8th district</a>
-                <li><a href="mailto:thewarehouse.ops@outlook.com" className="hover:underline text-gray-400">thewarehouse.ops@outlook.com</a></li>
-                <li><a href="tel:+201008766506" className="hover:underline text-gray-400">+20 1008766506</a></li>
-              </ul>
+                <li>
+                  <a href="mailto:thewarehouse.ops@outlook.com" className="hover:underline text-gray-400">
+                    thewarehouse.ops@outlook.com
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+201008766506" className="hover:underline text-gray-400">
+                    +20 1008766506
+                  </a>
+                </li>
+             </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 The Warehouse. All rights reserved.</p>
+            <p>&copy; 2025 The Warehouse. All rights reserved.</p>
+            <br></br>
+            <a href="mailto:ahmedhabdelfattah2@gmail.com" className="hover:underline text-gray-400">Contact Developer</a>
           </div>
         </div>
       </footer>
