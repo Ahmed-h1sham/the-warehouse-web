@@ -14,5 +14,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/get-started" element={<GetStarted />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

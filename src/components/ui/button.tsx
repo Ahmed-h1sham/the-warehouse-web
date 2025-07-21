@@ -7,7 +7,8 @@ export const Button = ({
   size = "default",
   ...props
 }: any) => {
-  const base = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50";
+  const base =
+    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50";
   const sizes = {
     default: "h-10 px-4 text-sm",
     lg: "h-11 px-8 text-base",

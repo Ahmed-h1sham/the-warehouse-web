@@ -1,61 +1,32 @@
-"use client"
+"use client";
 
-import { ArrowRight, CheckCircle, Package, BarChart3, Truck, RotateCcw, MapPin } from "lucide-react"
+import {
+  ArrowRight,
+  CheckCircle,
+  Package,
+  BarChart3,
+  Truck,
+  RotateCcw,
+  MapPin,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "./ui/card";
+import whLogo from "../assets/images/wh-logo-primary.jpg";
 
-// Simple Button component
-const Button = ({ children, className = "", size = "default", variant = "default", ...props }) => {
+const clientLogos = import.meta.glob('../assets/images/client-logo-*.png', { eager: true, import: 'default' });
 
-  const baseClasses =
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
-
-  const sizeClasses = {
-    default: "h-10 py-2 px-4",
-    lg: "h-11 px-8 rounded-md",
-  }
-
-  const variantClasses = {
-    default: "bg-primary text-primary-foreground hover:bg-primary/90",
-    outline: "border border-input hover:bg-accent hover:text-accent-foreground",
-  }
-
-  return (
-    <button className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`} {...props}>
-      {children}
-    </button>
-  )
-}
-
-// Simple Card components
-const Card = ({ children, className = "", ...props }) => (
-  <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`} {...props}>
-    {children}
-  </div>
-)
-
-const CardHeader = ({ children, className = "", ...props }) => (
-  <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>
-    {children}
-  </div>
-)
-
-const CardTitle = ({ children, className = "", ...props }) => (
-  <h3 className={`text-2xl font-semibold leading-none tracking-tight ${className}`} {...props}>
-    {children}
-  </h3>
-)
-
-const CardContent = ({ children, className = "", ...props }) => (
-  <div className={`p-6 pt-0 ${className}`} {...props}>
-    {children}
-  </div>
-)
-
-const CardDescription = ({ children, className = "", ...props }) => (
-  <p className={`text-sm text-muted-foreground ${className}`} {...props}>
-    {children}
-  </p>
-)
+// Helper to get the correct logo by index
+const getClientLogo = (i) => {
+  const key = `../assets/images/client-logo-${i + 1}.png`;
+  return clientLogos[key];
+};
 
 const TheWarehouseLanding = () => {
   const services = [
@@ -89,25 +60,25 @@ const TheWarehouseLanding = () => {
       description:
         "Efficiently allocate stock to retail locations, ensuring the right quantities reach the right stores on time.",
     },
-  ]
-const navigate = useNavigate();
+  ];
+  const navigate = useNavigate();
 
   const benefits = [
     "End-to-end logistics support",
     "Accurate & real-time inventory tracking",
     "Faster, hassle-free fulfillment",
     "Scalability to grow with your brand",
-  ]
+  ];
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
         block: "start",
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-black">
@@ -115,10 +86,16 @@ const navigate = useNavigate();
       <header className="border-b border-gray-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            <img src="/images/wh-logo-primary.jpg" alt="The Warehouse Logo" className="h-12 w-12 mr-3" />
+            <img
+              src={whLogo}
+              alt="The Warehouse Logo"
+              className="h-12 w-12 mr-3"
+            />
             <div className="text-3xl font-bold text-white">
-            <span className="text-yellow-400">The Warehouse</span>
-            <span className="flex items-left px-1 text-xs text-grey">The Engine Behind Your Business</span>
+              <span className="text-yellow-400">The Warehouse</span>
+              <span className="flex items-left px-1 text-xs text-grey">
+                The Engine Behind Your Business
+              </span>
             </div>
           </div>
           <nav className="hidden md:flex space-x-8">
@@ -142,12 +119,11 @@ const navigate = useNavigate();
             </button>
           </nav>
           <Button
-  className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
-  onClick={() => navigate("/get-started")}
->
-  Get Started
-</Button>
-
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold"
+            onClick={() => navigate("/get-started")}
+          >
+            Get Started
+          </Button>
         </div>
       </header>
 
@@ -160,8 +136,9 @@ const navigate = useNavigate();
             <span className="text-yellow-400">We Handle It All</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            From stock reception to smart warehousing, seamless distribution, and precise order fulfillment— The
-            Warehouse gets it stored, sorted, and shipped!
+            From stock reception to smart warehousing, seamless distribution,
+            and precise order fulfillment— The Warehouse gets it stored, sorted,
+            and shipped!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -183,16 +160,18 @@ const navigate = useNavigate();
           </div>
         </div>
       </section>
-      <br>
-      </br>
+      <br></br>
       {/* Services Section */}
       <section id="services" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-yellow-400 mb-4">Our Services</h2>
+            <h2 className="text-4xl font-bold text-yellow-400 mb-4">
+              Our Services
+            </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              At The Warehouse, we streamline inventory management, warehousing, and order fulfillment, allowing
-              business owners to focus on growth while we handle their logistics & operations.
+              At The Warehouse, we streamline inventory management, warehousing,
+              and order fulfillment, allowing business owners to focus on growth
+              while we handle their logistics & operations.
             </p>
           </div>
 
@@ -206,10 +185,14 @@ const navigate = useNavigate();
                   <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mb-4">
                     <service.icon className="h-6 w-6 text-black" />
                   </div>
-                  <CardTitle className="text-xl text-yellow-400">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-yellow-400">
+                    {service.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-300 leading-relaxed">{service.description}</CardDescription>
+                  <CardDescription className="text-gray-300 leading-relaxed">
+                    {service.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -222,10 +205,13 @@ const navigate = useNavigate();
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-yellow-400 mb-6">Why Choose The Warehouse?</h2>
+              <h2 className="text-4xl font-bold text-yellow-400 mb-6">
+                Why Choose The Warehouse?
+              </h2>
               <p className="text-lg text-gray-300 mb-8">
-                Let us handle the operations while you focus on building your business. Our end-to-end solutions ensure
-                efficiency, accuracy, and reliability.
+                Let us handle the operations while you focus on building your
+                business. Our end-to-end solutions ensure efficiency, accuracy,
+                and reliability.
               </p>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -236,16 +222,22 @@ const navigate = useNavigate();
                 ))}
               </div>
             </div>
-            <div className="bg-gray-950 p-8 rounded-2xl shadow-lg border border-gray-700">
+            <div className="bg-black-950 p-8 rounded-2xl shadow-lg border border-yellow-600">
               <div className="text-center">
                 <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Package className="h-10 w-10 text-black" />
                 </div>
-                <h3 className="text-2xl font-bold text-yellow-400 mb-4">Ready to Get Started?</h3>
+                <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+                  Ready to Get Started?
+                </h3>
                 <p className="text-gray-300 mb-6">
-                  Join businesses across Egypt who trust The Warehouse with their logistics operations.
+                  Join businesses across Egypt who trust The Warehouse with
+                  their logistics operations.
                 </p>
-                <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold" onClick={() => navigate("/get-started")} >
+                <Button
+                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
+                  onClick={() => navigate("/get-started")}
+                >
                   Contact Us Today
                 </Button>
               </div>
@@ -253,56 +245,63 @@ const navigate = useNavigate();
           </div>
         </div>
       </section>
-<hr></hr>
+      <hr></hr>
       {/* Trusted By Section */}
-<section className="py-16 bg-black-900">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-yellow-400 mb-4">Trusted by Leading Brands</h2>
-      <p className="text-gray-300 text-lg">
-        Join the growing list of successful businesses that trust The Warehouse with their logistics operations
-      </p>
-    </div>
+      <section className="py-16 bg-black-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-yellow-400 mb-4">
+              Trusted by Leading Brands
+            </h2>
+            <p className="text-gray-300 text-lg">
+              Join the growing list of successful businesses that trust The
+              Warehouse with their logistics operations
+            </p>
+          </div>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
-      {[...Array(17)].map((_, i) => (
-        <div
-          key={i}
-          className="bg-white p-3 rounded-lg hover:shadow-lg transition-shadow duration-300 flex items-center justify-center w-24 h-24"
-        >
-          <img
-            src={`/images/client-logo-${i + 1}.png`}
-            alt={`Client Logo ${i + 1}`}
-            className="max-h-16 object-contain"
-          />
-        </div>
-      ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
+            {[...Array(18)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-white p-3 rounded-lg hover:shadow-lg transition-shadow duration-300 flex items-center justify-center w-24 h-24"
+              >
+                <img
+                  src={getClientLogo(i)}
+                  alt={`Client Logo ${i + 1}`}
+                  className="max-h-16 object-contain"
+                />
+              </div>
+            ))}
 
-      {/* Plus Sign Slot */}
-      <div className="bg-white p-3 rounded-lg hover:shadow-lg transition-shadow duration-300 flex items-center justify-center w-24 h-24">
-        <span className="text-3xl font-bold text-gray-700">+</span>
-            </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
       {/* About Section */}
       <section id="about" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-yellow-400 mb-8">Who We Are</h2>
+            <h2 className="text-4xl font-bold text-yellow-400 mb-8">
+              Who We Are
+            </h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              The Warehouse is a leading warehousing and fulfillment partner based in Egypt, dedicated to streamlining
-              inventory management, distribution, and order fulfillment for all businesses. Built with a vision to
-              optimize supply chain operations, we offer end-to-end logistics solutions.
+              The Warehouse is a leading warehousing and fulfillment partner
+              based in Egypt, dedicated to streamlining inventory management,
+              distribution, and order fulfillment for all businesses. Built with
+              a vision to optimize supply chain operations, we offer end-to-end
+              logistics solutions.
             </p>
 
-            <div className="bg-gray-600/20 rounded-2xl p-8 mb-8 border border-yellow-600/30">
-              <h3 className="text-2xl font-bold text-yellow-400 mb-4">Our Mission</h3>
+            <div className="bg-black-600/20 rounded-2xl p-8 mb-8 border border-yellow-600">
+              <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+                Our Mission
+              </h3>
               <p className="text-lg text-gray-200 leading-relaxed">
-                At The Warehouse, our mission is to redefine warehousing and fulfillment with a focus on efficiency,
-                accuracy, and seamless operations. We are committed to providing businesses with transparent, reliable,
-                and scalable logistics solutions that empower them to grow with confidence.
+                At The Warehouse, our mission is to redefine warehousing and
+                fulfillment with a focus on efficiency, accuracy, and seamless
+                operations. We are committed to providing businesses with
+                transparent, reliable, and scalable logistics solutions that
+                empower them to grow with confidence.
               </p>
             </div>
           </div>
@@ -312,34 +311,45 @@ const navigate = useNavigate();
       {/* CTA Section */}
       <section className="py-20 bg-black-900">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-yellow-400 mb-6">Ready to Transform Your Logistics?</h2>
+          <h2 className="text-4xl font-bold text-yellow-400 mb-6">
+            Ready to Transform Your Logistics?
+          </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Let The Warehouse handle your warehousing and fulfillment while you focus on growing your business.
+            Let The Warehouse handle your warehousing and fulfillment while you
+            focus on growing your business.
           </p>
-            <Button
-                size="lg"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold text-lg px-8 py-3"
-                onClick={() => navigate("/get-started")}
-            >
+          <Button
+            size="lg"
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold text-lg px-8 py-3"
+            onClick={() => navigate("/get-started")}
+          >
             Get Started Today
             <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-
+          </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-black text-white py-12 border-t border-gray-800">
+      <footer
+        id="contact"
+        className="bg-black text-white py-12 border-t border-gray-800"
+      >
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src="/images/wh-logo-primary.jpg" alt="The Warehouse Logo" className="h-8 w-8 mr-2" />
+                <img
+                  src={whLogo}
+                  alt="The Warehouse Logo"
+                  className="h-8 w-8 mr-2"
+                />
                 <div className="text-2xl font-bold">
-                <span className="text-yellow-400">The Warehouse</span>
+                  <span className="text-yellow-400">The Warehouse</span>
                 </div>
               </div>
-              <p className="text-gray-400">Your trusted warehousing and fulfillment partner in Egypt.</p>
+              <p className="text-gray-400">
+                Your trusted warehousing and fulfillment partner in Egypt.
+              </p>
               <p className="text-gray-500 text-sm mt-2">Backend Operations</p>
             </div>
             <div>
@@ -362,29 +372,46 @@ const navigate = useNavigate();
             <div>
               <h4 className="font-semibold mb-4 text-yellow-400">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <a href="https://maps.app.goo.gl/3Nhc6VMTe4PqxM4i8?g_st=com.google.maps.preview.copy" target="_blank" className="hover:underline text-gray-400">First Settlement, 8th district</a>
+                <a
+                  href="https://maps.app.goo.gl/3Nhc6VMTe4PqxM4i8?g_st=com.google.maps.preview.copy"
+                  target="_blank"
+                  className="hover:underline text-gray-400"
+                >
+                  First Settlement, 8th district
+                </a>
                 <li>
-                  <a href="mailto:thewarehouse.ops@outlook.com" className="hover:underline text-gray-400">
+                  <a
+                    href="mailto:thewarehouse.ops@outlook.com"
+                    className="hover:underline text-gray-400"
+                  >
                     thewarehouse.ops@outlook.com
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+201008766506" className="hover:underline text-gray-400">
+                  <a
+                    href="tel:+201008766506"
+                    className="hover:underline text-gray-400"
+                  >
                     +20 1008766506
                   </a>
                 </li>
-             </ul>
+              </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 The Warehouse. All rights reserved.</p>
             <br></br>
-            <a href="mailto:ahmedhabdelfattah2@gmail.com" className="hover:underline text-gray-400">Contact Developer</a>
+            <a
+              href="mailto:ahmedhabdelfattah2@gmail.com"
+              className="hover:underline text-gray-400"
+            >
+              Contact Developer
+            </a>
           </div>
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default TheWarehouseLanding
+export default TheWarehouseLanding;
