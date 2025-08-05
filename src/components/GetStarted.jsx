@@ -3,45 +3,53 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import emailjs from "emailjs-com";
 import { Button } from "./ui/button";
-import whLogo from "../assets/images/wh-logo-primary.jpg";
-
-const clientLogos = import.meta.glob('../assets/images/client-logo-*.png', { eager: true, import: 'default' });
-
-// Helper to get the correct logo by index
-const getClientLogo = (i) => {
-  // The keys are like '../assets/images/client-logo-1.png'
-  const key = `../assets/images/client-logo-${i + 1}.png`;
-  return clientLogos[key];
-};
+import whLogo from "/wh-logo-primary.jpg";
+import { useState } from "react"; 
 
 const GetStarted = () => {
   const navigate = useNavigate();
+
+
+const [loading, setLoading] = useState(false);
+const [status, setStatus] = useState(null); // null | 'success' | 'error'
+const [message, setMessage] = useState("");
+
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  setLoading(true);
+  setStatus(null);
+  setMessage("");
 
-    emailjs
-      .sendForm(
-        "service_7etjxpb",
-        "template_yce1az9",
-        e.target,
-        "k8SZP28IWIUPKcGOT",
-      )
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          e.target.reset();
+  emailjs
+    .sendForm(
+      "service_7etjxpb",
+      "template_yce1az9",
+      e.target,
+      "k8SZP28IWIUPKcGOT",
+    )
+    .then(() => {
+      setStatus("success");
+      setMessage("Form sent successfully! Redirecting to home...");
+      e.target.reset();
+
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
           navigate("/");
-        },
-        (error) => {
-          alert("Failed to send message: " + error.text);
-        },
-      );
-  };
+        }, 1000);
+    })
+    .catch((error) => {
+      setStatus("error");
+      setMessage("Failed to send message: " + error.text);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+};
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
@@ -61,7 +69,7 @@ const GetStarted = () => {
               </span>
             </div>
           </div>
-          <nav className="hidden md:flex space-x-8">
+          {/* <nav className="hidden md:flex space-x-8">
             <button
               onClick={() => navigate("/")}
               className="text-gray-400 hover:text-white"
@@ -80,7 +88,7 @@ const GetStarted = () => {
             >
               Contact
             </button>
-          </nav>
+          </nav> */}
           <Button
             onClick={() => navigate("/")}
             className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
@@ -153,12 +161,24 @@ const GetStarted = () => {
                 className="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
-            <Button
-              type="submit"
-              className="w-full bg-yellow-400 text-black font-bold py-3 rounded hover:bg-yellow-500 text-lg transition-transform hover:scale-105"
-            >
-              Submit
-            </Button>
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-yellow-400 text-black font-bold py-3 rounded hover:bg-yellow-500 text-lg transition-transform hover:scale-105 disabled:opacity-60"
+              >
+                {loading ? "Submitting..." : "Submit"}
+              </Button>
+
+              {/* Feedback Messages Below Button */}
+              {/* {loading && (
+                <p className="text-yellow-400 text-center mt-4 animate-pulse">Sending...</p>
+              )} */}
+              {status === "success" && (
+                <p className="text-green-500 text-center mt-4">{message}</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-500 text-center mt-4">{message}</p>
+              )}    
           </form>
         </div>
       </div>
