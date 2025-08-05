@@ -18,15 +18,17 @@ import {
   CardContent,
   CardDescription,
 } from "./ui/card";
-import whLogo from "../assets/images/wh-logo-primary.jpg";
+import whLogo from "/wh-logo-primary.jpg";
 
-const clientLogos = import.meta.glob('../assets/images/client-logo-*.png', { eager: true, import: 'default' });
+// const clientLogos = (i) => `/client-logo-${i + 1}.png`;
 
-// Helper to get the correct logo by index
-const getClientLogo = (i) => {
-  const key = `../assets/images/client-logo-${i + 1}.png`;
-  return clientLogos[key];
-};
+// // Helper to get the correct logo by index
+// const getClientLogo = (i) => {
+//   const key = `/client-logo-${i + 1}.png`;
+//   return clientLogos[key];
+// };
+
+const getClientLogo = (i) => `/client-logo-${i + 1}.png`;
 
 const TheWarehouseLanding = () => {
   const services = [
@@ -260,11 +262,10 @@ const TheWarehouseLanding = () => {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
-            {[...Array(18)].map((_, i) => (
+            {[...Array(19)].map((_, i) => (
               <div
                 key={i}
-                className="bg-white p-3 rounded-lg hover:shadow-lg transition-shadow duration-300 flex items-center justify-center w-24 h-24"
-              >
+                className="bg-white p-3 rounded-lg hover:shadow-lg transition-shadow duration-300 flex items-center justify-center w-24 h-24">
                 <img
                   src={getClientLogo(i)}
                   alt={`Client Logo ${i + 1}`}
@@ -272,7 +273,10 @@ const TheWarehouseLanding = () => {
                 />
               </div>
             ))}
-
+            {/* Placeholder logo for "more clients" */}
+            <div className="bg-white p-3 rounded-lg flex items-center justify-center w-24 h-24 border-2 border-dashed border-gray-400">
+              <span className="text-4xl text-gray-400 font-bold">+</span>
+            </div>
           </div>
         </div>
       </section>
