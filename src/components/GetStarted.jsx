@@ -40,7 +40,7 @@ const [message, setMessage] = useState("");
         setTimeout(() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
           navigate("/");
-        }, 1000);
+        }, 750);
     })
     .catch((error) => {
       setStatus("error");
